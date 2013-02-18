@@ -1,0 +1,338 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		94413A2516D07E580046F3EC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94413A2416D07E580046F3EC /* UIKit.framework */; };
+		94413A2716D07E580046F3EC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94413A2616D07E580046F3EC /* Foundation.framework */; };
+		94413A2916D07E580046F3EC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94413A2816D07E580046F3EC /* CoreGraphics.framework */; };
+		94413A2F16D07E580046F3EC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 94413A2D16D07E580046F3EC /* InfoPlist.strings */; };
+		94413A3116D07E580046F3EC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 94413A3016D07E580046F3EC /* main.m */; };
+		94413A3516D07E580046F3EC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94413A3416D07E580046F3EC /* AppDelegate.m */; };
+		94413A3716D07E580046F3EC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 94413A3616D07E580046F3EC /* Default.png */; };
+		94413A3916D07E580046F3EC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94413A3816D07E580046F3EC /* Default@2x.png */; };
+		94413A3B16D07E580046F3EC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94413A3A16D07E580046F3EC /* Default-568h@2x.png */; };
+		94413A3E16D07E580046F3EC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94413A3D16D07E580046F3EC /* ViewController.m */; };
+		94413A4116D07E580046F3EC /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94413A3F16D07E580046F3EC /* ViewController.xib */; };
+		94413A4A16D07EA50046F3EC /* SpinWheel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94413A4916D07EA50046F3EC /* SpinWheel.m */; };
+		94413A4C16D0B44A0046F3EC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94413A4B16D0B44A0046F3EC /* QuartzCore.framework */; };
+		94E6887416D1C30600A6A2C9 /* SWPiece.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E6887316D1C30600A6A2C9 /* SWPiece.m */; };
+		94E6887616D1C7BD00A6A2C9 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 94E6887516D1C7BD00A6A2C9 /* assets */; };
+		94E6887916D1FD8D00A6A2C9 /* IITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E6887816D1FD8D00A6A2C9 /* IITableView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		94413A2116D07E580046F3EC /* SpinWheel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpinWheel.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		94413A2416D07E580046F3EC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		94413A2616D07E580046F3EC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		94413A2816D07E580046F3EC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		94413A2C16D07E580046F3EC /* SpinWheel-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpinWheel-Info.plist"; sourceTree = "<group>"; };
+		94413A2E16D07E580046F3EC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		94413A3016D07E580046F3EC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		94413A3216D07E580046F3EC /* SpinWheel-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpinWheel-Prefix.pch"; sourceTree = "<group>"; };
+		94413A3316D07E580046F3EC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		94413A3416D07E580046F3EC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		94413A3616D07E580046F3EC /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		94413A3816D07E580046F3EC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		94413A3A16D07E580046F3EC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		94413A3C16D07E580046F3EC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		94413A3D16D07E580046F3EC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		94413A4016D07E580046F3EC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		94413A4816D07EA50046F3EC /* SpinWheel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinWheel.h; sourceTree = "<group>"; };
+		94413A4916D07EA50046F3EC /* SpinWheel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinWheel.m; sourceTree = "<group>"; };
+		94413A4B16D0B44A0046F3EC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		94E6887216D1C30600A6A2C9 /* SWPiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPiece.h; sourceTree = "<group>"; };
+		94E6887316D1C30600A6A2C9 /* SWPiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPiece.m; sourceTree = "<group>"; };
+		94E6887516D1C7BD00A6A2C9 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
+		94E6887716D1FD8D00A6A2C9 /* IITableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IITableView.h; sourceTree = "<group>"; };
+		94E6887816D1FD8D00A6A2C9 /* IITableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IITableView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		94413A1E16D07E580046F3EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94413A2516D07E580046F3EC /* UIKit.framework in Frameworks */,
+				94413A2716D07E580046F3EC /* Foundation.framework in Frameworks */,
+				94413A2916D07E580046F3EC /* CoreGraphics.framework in Frameworks */,
+				94413A4C16D0B44A0046F3EC /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		94413A1816D07E580046F3EC = {
+			isa = PBXGroup;
+			children = (
+				94413A2A16D07E580046F3EC /* SpinWheel */,
+				94413A2316D07E580046F3EC /* Frameworks */,
+				94413A2216D07E580046F3EC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		94413A2216D07E580046F3EC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				94413A2116D07E580046F3EC /* SpinWheel.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		94413A2316D07E580046F3EC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				94413A4B16D0B44A0046F3EC /* QuartzCore.framework */,
+				94413A2416D07E580046F3EC /* UIKit.framework */,
+				94413A2616D07E580046F3EC /* Foundation.framework */,
+				94413A2816D07E580046F3EC /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		94413A2A16D07E580046F3EC /* SpinWheel */ = {
+			isa = PBXGroup;
+			children = (
+				94413A4716D07E8B0046F3EC /* SpinWheel */,
+				94413A3316D07E580046F3EC /* AppDelegate.h */,
+				94413A3416D07E580046F3EC /* AppDelegate.m */,
+				94413A3C16D07E580046F3EC /* ViewController.h */,
+				94413A3D16D07E580046F3EC /* ViewController.m */,
+				94E6887716D1FD8D00A6A2C9 /* IITableView.h */,
+				94E6887816D1FD8D00A6A2C9 /* IITableView.m */,
+				94413A3F16D07E580046F3EC /* ViewController.xib */,
+				94413A2B16D07E580046F3EC /* Supporting Files */,
+			);
+			path = SpinWheel;
+			sourceTree = "<group>";
+		};
+		94413A2B16D07E580046F3EC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				94413A2C16D07E580046F3EC /* SpinWheel-Info.plist */,
+				94413A2D16D07E580046F3EC /* InfoPlist.strings */,
+				94413A3016D07E580046F3EC /* main.m */,
+				94413A3216D07E580046F3EC /* SpinWheel-Prefix.pch */,
+				94413A3616D07E580046F3EC /* Default.png */,
+				94413A3816D07E580046F3EC /* Default@2x.png */,
+				94413A3A16D07E580046F3EC /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		94413A4716D07E8B0046F3EC /* SpinWheel */ = {
+			isa = PBXGroup;
+			children = (
+				94E6887516D1C7BD00A6A2C9 /* assets */,
+				94413A4816D07EA50046F3EC /* SpinWheel.h */,
+				94413A4916D07EA50046F3EC /* SpinWheel.m */,
+				94E6887216D1C30600A6A2C9 /* SWPiece.h */,
+				94E6887316D1C30600A6A2C9 /* SWPiece.m */,
+			);
+			path = SpinWheel;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		94413A2016D07E580046F3EC /* SpinWheel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 94413A4416D07E580046F3EC /* Build configuration list for PBXNativeTarget "SpinWheel" */;
+			buildPhases = (
+				94413A1D16D07E580046F3EC /* Sources */,
+				94413A1E16D07E580046F3EC /* Frameworks */,
+				94413A1F16D07E580046F3EC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SpinWheel;
+			productName = SpinWheel;
+			productReference = 94413A2116D07E580046F3EC /* SpinWheel.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		94413A1916D07E580046F3EC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = ryan;
+			};
+			buildConfigurationList = 94413A1C16D07E580046F3EC /* Build configuration list for PBXProject "SpinWheel" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 94413A1816D07E580046F3EC;
+			productRefGroup = 94413A2216D07E580046F3EC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				94413A2016D07E580046F3EC /* SpinWheel */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		94413A1F16D07E580046F3EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94413A2F16D07E580046F3EC /* InfoPlist.strings in Resources */,
+				94413A3716D07E580046F3EC /* Default.png in Resources */,
+				94413A3916D07E580046F3EC /* Default@2x.png in Resources */,
+				94413A3B16D07E580046F3EC /* Default-568h@2x.png in Resources */,
+				94413A4116D07E580046F3EC /* ViewController.xib in Resources */,
+				94E6887616D1C7BD00A6A2C9 /* assets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		94413A1D16D07E580046F3EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94413A3116D07E580046F3EC /* main.m in Sources */,
+				94413A3516D07E580046F3EC /* AppDelegate.m in Sources */,
+				94413A3E16D07E580046F3EC /* ViewController.m in Sources */,
+				94413A4A16D07EA50046F3EC /* SpinWheel.m in Sources */,
+				94E6887416D1C30600A6A2C9 /* SWPiece.m in Sources */,
+				94E6887916D1FD8D00A6A2C9 /* IITableView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		94413A2D16D07E580046F3EC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				94413A2E16D07E580046F3EC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		94413A3F16D07E580046F3EC /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				94413A4016D07E580046F3EC /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		94413A4216D07E580046F3EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		94413A4316D07E580046F3EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		94413A4516D07E580046F3EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpinWheel/SpinWheel-Prefix.pch";
+				INFOPLIST_FILE = "SpinWheel/SpinWheel-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		94413A4616D07E580046F3EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpinWheel/SpinWheel-Prefix.pch";
+				INFOPLIST_FILE = "SpinWheel/SpinWheel-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		94413A1C16D07E580046F3EC /* Build configuration list for PBXProject "SpinWheel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94413A4216D07E580046F3EC /* Debug */,
+				94413A4316D07E580046F3EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		94413A4416D07E580046F3EC /* Build configuration list for PBXNativeTarget "SpinWheel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94413A4516D07E580046F3EC /* Debug */,
+				94413A4616D07E580046F3EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 94413A1916D07E580046F3EC /* Project object */;
+}
