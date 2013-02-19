@@ -29,7 +29,7 @@
 }
 
 - (id)initWithImage:(UIImage *)image {
-    if (self = [super initWithImage:image]) {
+    if (self = [super initWithImage:nil]) {
         
         [self commonInit];
     }

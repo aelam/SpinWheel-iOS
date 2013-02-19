@@ -33,19 +33,6 @@
     wheel.delegate = self;
     [self.view addSubview:wheel];
     
-    
-//    UIImageView *spinMask = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"content_mask"]];
-//
-//    spinMask.userInteractionEnabled = YES;
-//    wheel.contentMask = spinMask;
-//    finishButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [finishButton setImage:[UIImage imageNamed:@"finish_button"] forState:UIControlStateNormal];
-//    [finishButton setImage:[UIImage imageNamed:@"finish_button_clicked"] forState:UIControlStateHighlighted];
-//    finishButton.frame = CGRectMake(0, 0, 100, 40);
-//    finishButton.center = CGPointMake(150, CGRectGetHeight(spinMask.frame) * 0.5);
-//    [wheel.contentMask addSubview:finishButton];
-//    [finishButton addTarget:self action:@selector(finishSpinAction:) forControlEvents:UIControlEventTouchUpInside];
-//    [spinMask release];
 
     [super viewDidLoad];
 

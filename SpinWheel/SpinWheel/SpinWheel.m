@@ -29,8 +29,8 @@ static NSInteger const kPieceTagOffset = 2000;
 
         CGFloat diameter = MAX(self.sectorImage.size.width * 2,CGRectGetWidth(self.bounds));
       
-        _contentView = [[UIView alloc]initWithFrame:CGRectMake(self.bounds.size.width - diameter,self.frame.size.height * 0.5 - diameter * 0.5, diameter, diameter)];
-
+        _contentView = [[UIImageView alloc]initWithFrame:CGRectMake(self.bounds.size.width - diameter + 10,self.frame.size.height * 0.5 - diameter * 0.5, diameter, diameter)];
+        _contentView.image = [UIImage imageNamed:@"big-round"];
         [self addSubview:_contentView];
         
         UIPanGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(rotatingAction:)];
@@ -168,7 +168,7 @@ static NSInteger const kPieceTagOffset = 2000;
     [self recyleAllPieces];
     
     CGFloat diameter = MAX(self.sectorImage.size.width * 2,CGRectGetWidth(self.bounds));
-    _contentView.frame = CGRectMake(self.bounds.size.width - diameter,self.frame.size.height * 0.5 - diameter * 0.5 - 18, diameter, diameter);
+    _contentView.frame = CGRectMake(self.bounds.size.width - diameter + 10,self.frame.size.height * 0.5 - diameter * 0.5 - 18, diameter, diameter);
     
     
     CGPoint center = _contentMask.center;
