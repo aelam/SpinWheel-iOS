@@ -28,28 +28,38 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"filter_foot_bg"]];
     
     wheel = [[SpinWheel alloc]initWithFrame:self.view.bounds];
-    wheel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin| UIViewAutoresizingFlexibleWidth;
-    wheel.center = self.view.center;
     wheel.delegate = self;
     [self.view addSubview:wheel];
     
-    UIImageView *contentMask = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"content_mask"]];
-    [wheel addSubview:contentMask];
-    CGPoint center = contentMask.center;
-    center.y = wheel.contentView.center.y - 20;
-    contentMask.center = center;
+    wheel.contentView.image = [UIImage imageNamed:@"big-round"];
+    [wheel.contentView sizeToFit];
+    wheel.contentMask.image = [UIImage imageNamed:@"content_mask"];
+    [wheel.contentMask sizeToFit];
+    [wheel.contentMask setNeedsLayout];
     
-    contentMask.userInteractionEnabled = YES;
     finishButton = [UIButton buttonWithType:UIButtonTypeCustom];
     finishButton.frame = CGRectMake(0, 0, 124, 48);
-    finishButton.center = CGPointMake(150, CGRectGetHeight(contentMask.frame) * 0.5);
+    finishButton.center = CGPointMake(150, CGRectGetHeight(wheel.contentMask.frame) * 0.5);
     [finishButton setImage:[UIImage imageNamed:@"finish_button"] forState:UIControlStateNormal];
-    [contentMask addSubview:finishButton];
+    [wheel.contentMask addSubview:finishButton];
     
     [finishButton addTarget:self action:@selector(finishSpinAction:) forControlEvents:UIControlEventTouchUpInside];
     
     
+    
     [super viewDidLoad];
+
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [wheel randomRotateDemo];
 
 }
 
@@ -57,27 +67,9 @@
     sender.selected = !sender.selected;
 
     [UIView animateWithDuration:0.2 animations:^{
-        wheel.transform = sender.selected?CGAffineTransformMakeTranslation(-260, 0):CGAffineTransformIdentity;
+        wheel.transform = CGAffineTransformMakeTranslation(-260, 0);
     }];
-
 }
-
-- (void)awakeFromNib {
-    
-}
-
-- (void)viewWillLayoutSubviews {
-    
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    NSLog(@"sdf");
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    
-}
-
 
 - (NSInteger)numberOfPieceInSpinWheel:(SpinWheel *)SpinWheel {
     return 12;
@@ -88,7 +80,7 @@
 - (SWPiece *)spinWheel:(SpinWheel *)spinWheel pieceForIndex:(NSInteger)index {
     SWPiece *piece = [spinWheel dequeueReusablePiece];
     if (piece== nil) {
-        piece = [[[SWPiece alloc] initWithImage:spinWheel.sectorImage] autorelease];
+        piece = [[[SWPiece alloc] initWithImage:nil] autorelease];
     }
     
     piece.titleLabel.text = [NSString stringWithFormat:@"%d",index];
