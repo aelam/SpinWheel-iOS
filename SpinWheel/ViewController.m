@@ -33,7 +33,22 @@
     wheel.delegate = self;
     [self.view addSubview:wheel];
     
-
+    UIImageView *contentMask = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"content_mask"]];
+    [wheel addSubview:contentMask];
+    CGPoint center = contentMask.center;
+    center.y = wheel.contentView.center.y - 20;
+    contentMask.center = center;
+    
+    contentMask.userInteractionEnabled = YES;
+    finishButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    finishButton.frame = CGRectMake(0, 0, 124, 48);
+    finishButton.center = CGPointMake(150, CGRectGetHeight(contentMask.frame) * 0.5);
+    [finishButton setImage:[UIImage imageNamed:@"finish_button"] forState:UIControlStateNormal];
+    [contentMask addSubview:finishButton];
+    
+    [finishButton addTarget:self action:@selector(finishSpinAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
     [super viewDidLoad];
 
 }
@@ -42,7 +57,7 @@
     sender.selected = !sender.selected;
 
     [UIView animateWithDuration:0.2 animations:^{
-        wheel.transform = sender.selected?CGAffineTransformMakeTranslation(-250, 0):CGAffineTransformIdentity;
+        wheel.transform = sender.selected?CGAffineTransformMakeTranslation(-260, 0):CGAffineTransformIdentity;
     }];
 
 }
