@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SWPiece.h"
 
+
 @class SpinWheel;
 
 @protocol SpinWheelDelegate <NSObject>
@@ -18,6 +19,8 @@
 
 @optional
 - (void)spinWheel:(SpinWheel *)spinWheel didSpinToIndex:(NSInteger)index;
+- (void)spinWheel:(SpinWheel *)spinWheel willSpinToIndex:(NSInteger)index;
+- (void)spinWheel:(SpinWheel *)spinWheel willUnspinIndex:(NSInteger)index;
 
 @end
 
@@ -36,7 +39,10 @@
     BOOL        _isActive;
     
     UIView      *_contentView;
-    UIView      *_centerMask;
+    
+    // TODO
+    NSMutableSet *_visiblePieces;
+    NSMutableSet *_recycledPieces;
     
 }
 
@@ -44,9 +50,14 @@
 @property (nonatomic,assign) id <SpinWheelDelegate> delegate;
 @property (nonatomic,assign) CGFloat insideRadius;
 @property (nonatomic,assign) NSInteger currentIndex;
-//@property (nonatomic,assign) NSInteger startIndex; //default 0
-//@property (nonatomic,assign) 
+@property (nonatomic,readonly) UIView  *contentView;
+@property (nonatomic,retain) UIView  *contentMask;
 
+@property (nonatomic,retain) UIImage *sectorImage;                 // 扇形背景  决定大小 default `[UIImage imageNamed:@"piece.png"];`
+@property(nonatomic) UIViewAutoresizing piecesAutoresizingMask;    // default is 右上
+
+
+- (id)dequeueReusablePiece;
 
 - (void)reloadData;
 

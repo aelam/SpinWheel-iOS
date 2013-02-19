@@ -17,19 +17,65 @@
 
 @end
 
-@implementation ViewController
+@implementation ViewController {
+    UIButton *finishButton;
+    SpinWheel *wheel;
+}
+
 
 - (void)viewDidLoad
 {
-    SpinWheel *wheel = [[SpinWheel alloc]initWithFrame:CGRectMake(-150, 0, 320, 480)];
-//    wheel.center = self.view.center;
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"filter_foot_bg"]];
+    
+    wheel = [[SpinWheel alloc]initWithFrame:self.view.bounds];
+    wheel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin| UIViewAutoresizingFlexibleWidth;
+    wheel.center = self.view.center;
     wheel.delegate = self;
     [self.view addSubview:wheel];
-    [wheel release];
     
+    
+//    UIImageView *spinMask = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"content_mask"]];
+//
+//    spinMask.userInteractionEnabled = YES;
+//    wheel.contentMask = spinMask;
+//    finishButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [finishButton setImage:[UIImage imageNamed:@"finish_button"] forState:UIControlStateNormal];
+//    [finishButton setImage:[UIImage imageNamed:@"finish_button_clicked"] forState:UIControlStateHighlighted];
+//    finishButton.frame = CGRectMake(0, 0, 100, 40);
+//    finishButton.center = CGPointMake(150, CGRectGetHeight(spinMask.frame) * 0.5);
+//    [wheel.contentMask addSubview:finishButton];
+//    [finishButton addTarget:self action:@selector(finishSpinAction:) forControlEvents:UIControlEventTouchUpInside];
+//    [spinMask release];
+
     [super viewDidLoad];
 
 }
+
+- (IBAction)finishSpinAction:(UIButton *)sender {
+    sender.selected = !sender.selected;
+
+    [UIView animateWithDuration:0.2 animations:^{
+        wheel.transform = sender.selected?CGAffineTransformMakeTranslation(-250, 0):CGAffineTransformIdentity;
+    }];
+
+}
+
+- (void)awakeFromNib {
+    
+}
+
+- (void)viewWillLayoutSubviews {
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    NSLog(@"sdf");
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    
+}
+
 
 - (NSInteger)numberOfPieceInSpinWheel:(SpinWheel *)SpinWheel {
     return 12;
@@ -38,18 +84,23 @@
 
 
 - (SWPiece *)spinWheel:(SpinWheel *)spinWheel pieceForIndex:(NSInteger)index {
-    UIImage *image = [UIImage imageNamed:@"assets/piece.png"];
+    SWPiece *piece = [spinWheel dequeueReusablePiece];
+    if (piece== nil) {
+        piece = [[[SWPiece alloc] initWithImage:spinWheel.sectorImage] autorelease];
+    }
     
-    SWPiece *piece = [[SWPiece alloc] initWithImage:image];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetWidth(piece.frame) - 40, 40, 30, 15)];
-    label.textAlignment = NSTextAlignmentRight;
-    label.text = [NSString stringWithFormat:@"%d",index];
-    [piece addSubview:label];
-    return [piece autorelease];
+    piece.titleLabel.text = [NSString stringWithFormat:@"%d",index];
+
+    
+    return piece;
 }
 
+
+
 - (void)spinWheel:(SpinWheel *)spinWheel didSpinToIndex:(NSInteger)index {
-    NSLog(@"%s,index : %d",_cmd,index);
+    NSLog(@"%@,index : %d",NSStringFromSelector(_cmd),index);
+//    SWPiece *piece = [spinWheel pieceForIndex:index];
+//    piece.titleLabel.backgroundColor = [UIColor redColor];
 }
 
 
