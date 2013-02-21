@@ -16,11 +16,13 @@
 		94413A3716D07E580046F3EC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 94413A3616D07E580046F3EC /* Default.png */; };
 		94413A3916D07E580046F3EC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94413A3816D07E580046F3EC /* Default@2x.png */; };
 		94413A3B16D07E580046F3EC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94413A3A16D07E580046F3EC /* Default-568h@2x.png */; };
-		94413A3E16D07E580046F3EC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94413A3D16D07E580046F3EC /* ViewController.m */; };
+		94413A3E16D07E580046F3EC /* SurveyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94413A3D16D07E580046F3EC /* SurveyViewController.m */; };
 		94413A4A16D07EA50046F3EC /* SpinWheel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94413A4916D07EA50046F3EC /* SpinWheel.m */; };
 		94413A4C16D0B44A0046F3EC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94413A4B16D0B44A0046F3EC /* QuartzCore.framework */; };
+		94D8AAAE16D60213007A4271 /* FXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D8AAAD16D60213007A4271 /* FXLabel.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		94D8AAB116D627A1007A4271 /* right_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 94D8AAAF16D627A1007A4271 /* right_shadow.png */; };
+		94D8AAB216D627A1007A4271 /* right_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94D8AAB016D627A1007A4271 /* right_shadow@2x.png */; };
 		94DD6EE016D4C9330027EDC7 /* UIView+Glow.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DD6EDF16D4C9330027EDC7 /* UIView+Glow.m */; };
-		94DD6EE316D4D0580027EDC7 /* RRSGlowLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DD6EE216D4D0580027EDC7 /* RRSGlowLabel.m */; };
 		94E3E75216D3743A00C159A3 /* UIView+ColorOfPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E3E75116D3743A00C159A3 /* UIView+ColorOfPoint.m */; };
 		94E3E75E16D37C0900C159A3 /* content_mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E3E75416D37C0900C159A3 /* content_mask.png */; };
 		94E3E75F16D37C0900C159A3 /* content_mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E3E75516D37C0900C159A3 /* content_mask@2x.png */; };
@@ -54,15 +56,17 @@
 		94413A3616D07E580046F3EC /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		94413A3816D07E580046F3EC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		94413A3A16D07E580046F3EC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		94413A3C16D07E580046F3EC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		94413A3D16D07E580046F3EC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		94413A3C16D07E580046F3EC /* SurveyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SurveyViewController.h; sourceTree = "<group>"; };
+		94413A3D16D07E580046F3EC /* SurveyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SurveyViewController.m; sourceTree = "<group>"; };
 		94413A4816D07EA50046F3EC /* SpinWheel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinWheel.h; sourceTree = "<group>"; };
 		94413A4916D07EA50046F3EC /* SpinWheel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinWheel.m; sourceTree = "<group>"; };
 		94413A4B16D0B44A0046F3EC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		94D8AAAC16D60213007A4271 /* FXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXLabel.h; sourceTree = "<group>"; };
+		94D8AAAD16D60213007A4271 /* FXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXLabel.m; sourceTree = "<group>"; };
+		94D8AAAF16D627A1007A4271 /* right_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_shadow.png; sourceTree = "<group>"; };
+		94D8AAB016D627A1007A4271 /* right_shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right_shadow@2x.png"; sourceTree = "<group>"; };
 		94DD6EDE16D4C9330027EDC7 /* UIView+Glow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Glow.h"; sourceTree = "<group>"; };
 		94DD6EDF16D4C9330027EDC7 /* UIView+Glow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Glow.m"; sourceTree = "<group>"; };
-		94DD6EE116D4D0580027EDC7 /* RRSGlowLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRSGlowLabel.h; sourceTree = "<group>"; };
-		94DD6EE216D4D0580027EDC7 /* RRSGlowLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRSGlowLabel.m; sourceTree = "<group>"; };
 		94E3E75016D3743A00C159A3 /* UIView+ColorOfPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ColorOfPoint.h"; sourceTree = "<group>"; };
 		94E3E75116D3743A00C159A3 /* UIView+ColorOfPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ColorOfPoint.m"; sourceTree = "<group>"; };
 		94E3E75416D37C0900C159A3 /* content_mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = content_mask.png; sourceTree = "<group>"; };
@@ -135,8 +139,8 @@
 				94413A4716D07E8B0046F3EC /* SpinWheel */,
 				94413A3316D07E580046F3EC /* AppDelegate.h */,
 				94413A3416D07E580046F3EC /* AppDelegate.m */,
-				94413A3C16D07E580046F3EC /* ViewController.h */,
-				94413A3D16D07E580046F3EC /* ViewController.m */,
+				94413A3C16D07E580046F3EC /* SurveyViewController.h */,
+				94413A3D16D07E580046F3EC /* SurveyViewController.m */,
 				94E6887716D1FD8D00A6A2C9 /* IITableView.h */,
 				94E6887816D1FD8D00A6A2C9 /* IITableView.m */,
 				94E3E75316D37C0900C159A3 /* assets */,
@@ -169,9 +173,9 @@
 				94F8963A16D49B8D0082A157 /* UIView+Spin.h */,
 				94F8963B16D49B8D0082A157 /* UIView+Spin.m */,
 				94DD6EDE16D4C9330027EDC7 /* UIView+Glow.h */,
-				94DD6EE116D4D0580027EDC7 /* RRSGlowLabel.h */,
-				94DD6EE216D4D0580027EDC7 /* RRSGlowLabel.m */,
 				94DD6EDF16D4C9330027EDC7 /* UIView+Glow.m */,
+				94D8AAAC16D60213007A4271 /* FXLabel.h */,
+				94D8AAAD16D60213007A4271 /* FXLabel.m */,
 				94E3E75016D3743A00C159A3 /* UIView+ColorOfPoint.h */,
 				94E3E75116D3743A00C159A3 /* UIView+ColorOfPoint.m */,
 			);
@@ -181,6 +185,8 @@
 		94E3E75316D37C0900C159A3 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				94D8AAAF16D627A1007A4271 /* right_shadow.png */,
+				94D8AAB016D627A1007A4271 /* right_shadow@2x.png */,
 				94E3E76C16D38FDF00C159A3 /* big-round.png */,
 				94E3E76E16D38FE500C159A3 /* big-round@2x.png */,
 				94E3E76816D3858F00C159A3 /* filter_foot_bg.png */,
@@ -267,6 +273,8 @@
 				94E3E76B16D3859000C159A3 /* filter_foot_bg@2x.png in Resources */,
 				94E3E76D16D38FDF00C159A3 /* big-round.png in Resources */,
 				94E3E76F16D38FE500C159A3 /* big-round@2x.png in Resources */,
+				94D8AAB116D627A1007A4271 /* right_shadow.png in Resources */,
+				94D8AAB216D627A1007A4271 /* right_shadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,14 +287,14 @@
 			files = (
 				94413A3116D07E580046F3EC /* main.m in Sources */,
 				94413A3516D07E580046F3EC /* AppDelegate.m in Sources */,
-				94413A3E16D07E580046F3EC /* ViewController.m in Sources */,
+				94413A3E16D07E580046F3EC /* SurveyViewController.m in Sources */,
 				94413A4A16D07EA50046F3EC /* SpinWheel.m in Sources */,
 				94E6887416D1C30600A6A2C9 /* SWPiece.m in Sources */,
 				94E6887916D1FD8D00A6A2C9 /* IITableView.m in Sources */,
 				94E3E75216D3743A00C159A3 /* UIView+ColorOfPoint.m in Sources */,
 				94F8963C16D49B8D0082A157 /* UIView+Spin.m in Sources */,
 				94DD6EE016D4C9330027EDC7 /* UIView+Glow.m in Sources */,
-				94DD6EE316D4D0580027EDC7 /* RRSGlowLabel.m in Sources */,
+				94D8AAAE16D60213007A4271 /* FXLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-@class RRSGlowLabel;
+@class FXLabel;
 
-@interface SWPiece : UIImageView {
+@interface SWPiece : UIView {
 }
 
-@property (nonatomic,readonly) UILabel *titleLabel;
+@property (nonatomic,readonly) FXLabel *titleLabel;
 @property (nonatomic,readonly) NSString *identifier;
 
 - (id)initWithImage:(UIImage *)image;

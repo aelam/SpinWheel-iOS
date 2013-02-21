@@ -24,6 +24,7 @@ static NSInteger const kPieceTagOffset = 2000;
 @synthesize contentView = _contentView;
 @synthesize contentMask = _contentMask;
 @synthesize gestureMode = _gestureMode;
+@synthesize radius = _radius;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -46,10 +47,7 @@ static NSInteger const kPieceTagOffset = 2000;
 
         [self addGestureRecognizer:recognizer];
         [recognizer release];
-        
-//        self.layer.borderColor = [UIColor yellowColor].CGColor;
-//        self.layer.borderWidth = 2;
-        
+                
         
         _recycledPieces = [[NSMutableSet alloc] initWithCapacity:0];
 
@@ -67,28 +65,28 @@ static NSInteger const kPieceTagOffset = 2000;
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:@"frame"]) {
         dispatch_async(dispatch_get_main_queue(), ^{
-//            NSLog(@"frame changed!!%@",NSStringFromCGRect(self.frame));
-//            NSLog(@"bounds = %@",NSStringFromCGRect(self.bounds));
-//            NSLog(@"_contentView.center = %@",NSStringFromCGPoint(_contentView.center));
-//            NSLog(@"_contentView.frame = %@",NSStringFromCGRect(_contentView.frame));
-
             [self reloadData];
-//            NSLog(@"_contentView.center = %@",NSStringFromCGPoint(_contentView.center));
-//            NSLog(@"_contentView.frame = %@",NSStringFromCGRect(_contentView.frame));
-//
         });
         
     }
 }
 
 - (void)layoutSubviews {
-
     [super layoutSubviews];
     
     if (self.delegate == nil || self.contentView.image == nil) {
         return;
     }
     
+    
+}
+
+- (void)setRadius:(CGFloat)r {
+    if (_radius != r) {
+        _radius = r;
+        
+        [self reloadData];
+    }
 }
 
 - (void)setDelegate:(id<SpinWheelDelegate>)aDelegate {
@@ -115,7 +113,7 @@ static NSInteger const kPieceTagOffset = 2000;
 
 - (void)reloadData {
 
-    if (self.delegate == nil || self.contentView.image == nil) {
+    if (self.delegate == nil) {
         return;
     }
     
@@ -143,17 +141,18 @@ static NSInteger const kPieceTagOffset = 2000;
     [self recyleAllPieces];
     
     _contentView.transform = CGAffineTransformIdentity;
-    CGFloat diameter = MAX(self.contentView.image.size.width,CGRectGetWidth(self.bounds));
-    
+    CGFloat diameter = MAX(self.radius,CGRectGetWidth(self.bounds));
+    _piecesCount = [self.delegate numberOfPieceInSpinWheel:self];
+    CGFloat angleSize = 2 * M_PI / _piecesCount;
+
+    _contentView.frame = CGRectMake(0, 0, 2 *self.radius, 2 * self.radius * sin(angleSize * 0.5));
     _contentView.center = CGPointMake( self.bounds.size.width - diameter * 0.5 + 10,self.bounds.size.height * 0.5);
     
     CGPoint center = _contentMask.center;
     center.y = self.bounds.size.height * 0.5;
     _contentMask.center = center;
     
-    _piecesCount = [self.delegate numberOfPieceInSpinWheel:self];
     
-    CGFloat angleSize = 2 * M_PI / _piecesCount;
 
     for(int i = 0; i < _piecesCount; i++){
         SWPiece *piece = [self.delegate spinWheel:self pieceForIndex:i];
@@ -241,13 +240,10 @@ static NSInteger const kPieceTagOffset = 2000;
         
     } else if (recognizer.state == UIGestureRecognizerStateCancelled || recognizer.state == UIGestureRecognizerStateEnded) {
         
-        
-//        _contentView.transform = CGAffineTransformRotate(_contentView.transform, rotateRadian - rotateRadian0);
-
         if (1) {
 //        if (fabsf(velocity.y) > 500) {
 
-            CGFloat offset =  velocity.y /fabsf(velocity.y) * fabsf(velocity.y) / 1000;
+            CGFloat offset =  velocity.y /fabsf(velocity.y) * fabsf(velocity.y) / 800;
             //        radians += offset * M_PI / 2;
             CGFloat offset_radian = offset * angleSize;
             
@@ -308,14 +304,14 @@ static NSInteger const kPieceTagOffset = 2000;
     _currentIndex = [self logicalIndexWithCycleIndex:fakeIndex];
     
     if (animated) {
-        [UIView animateWithDuration:0.3 animations:^{
+        [UIView animateWithDuration:0.2 animations:^{
             _contentView.transform = CGAffineTransformMakeRotation(angleSize * fakeIndex);
         } completion:^(BOOL finished) {
             if ([self.delegate respondsToSelector:@selector(spinWheel:didSpinToIndex:)]) {
                 [self.delegate spinWheel:self didSpinToIndex:_currentIndex];
             }
         }];
-        [UIView animateWithDuration:0.3 animations:^{
+        [UIView animateWithDuration:0.2 animations:^{
             _contentView.transform = CGAffineTransformMakeRotation(angleSize * fakeIndex);
         }];
     } else {

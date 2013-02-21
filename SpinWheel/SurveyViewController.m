@@ -1,27 +1,27 @@
 //
-//  ViewController.m
+//  SurveyViewController.m
 //  SpinWheel
 //
 //  Created by ryan on 13-2-17.
 //  Copyright (c) 2013年 ryan. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "SurveyViewController.h"
 #import "SpinWheel.h"
 #import "SWPiece.h"
 #import <QuartzCore/QuartzCore.h>
-#import "RRSGlowLabel.h"
+#import "FXLabel.h"
 
 #import "IITableView.h"
 
 
 static NSInteger const kCommentTextViewHeight = 217;
 
-@interface ViewController () <SpinWheelDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface SurveyViewController () <SpinWheelDelegate,UITableViewDataSource,UITableViewDelegate>
 
 @end
 
-@implementation ViewController {
+@implementation SurveyViewController {
     UIButton *finishButton;
     SpinWheel *wheel;
     
@@ -38,11 +38,16 @@ static NSInteger const kCommentTextViewHeight = 217;
     wheel.delegate = self;
     [self.view addSubview:wheel];
     
-    wheel.contentView.image = [UIImage imageNamed:@"big-round"];
-    [wheel.contentView sizeToFit];
+    wheel.radius = 859;
     wheel.contentMask.image = [UIImage imageNamed:@"content_mask"];
     [wheel.contentMask sizeToFit];
     [wheel.contentMask setNeedsLayout];
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"right_shadow"]];
+    imageView.center = CGPointMake(210,wheel.center.y - 20);
+    [wheel addSubview:imageView];
+    
+    [wheel insertSubview:imageView belowSubview:wheel.contentView];
     
     finishButton = [UIButton buttonWithType:UIButtonTypeCustom];
     finishButton.frame = CGRectMake(0, 0, 124, 48);
@@ -52,8 +57,6 @@ static NSInteger const kCommentTextViewHeight = 217;
     
     [finishButton addTarget:self action:@selector(finishSpinAction:) forControlEvents:UIControlEventTouchUpInside];
     
-    
-//    [wheel addObserver:self forKeyPath:@"transform.tx" options:NSKeyValueObservingOptionNew context:NULL];
     
     
     [super viewDidLoad];

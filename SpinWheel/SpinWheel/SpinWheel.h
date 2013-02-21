@@ -51,6 +51,7 @@ enum SWGestureMode {
 @property (nonatomic,readonly)UIImageView   *contentView;
 @property (nonatomic,readonly)UIImageView   *contentMask;
 @property (nonatomic,assign) int           gestureMode;
+@property (nonatomic,assign) CGFloat        radius;
 
 - (id)dequeueReusablePiece;
 

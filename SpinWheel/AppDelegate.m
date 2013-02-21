@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 
-#import "ViewController.h"
+#import "SurveyViewController.h"
 
 @implementation AppDelegate
 
@@ -23,11 +23,13 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
-    self.viewController = [[[ViewController alloc] init] autorelease];
+    self.viewController = [[[SurveyViewController alloc] init] autorelease];
     UINavigationController *navigator = [[UINavigationController alloc] initWithRootViewController:self.viewController];
 //    self.window.rootViewController = self.viewController;//navigator;
     self.window.rootViewController = navigator;
 
+    NSLog(@"%@",[UIFont familyNames]);
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
