@@ -7,6 +7,8 @@
 //
 
 #import "SWPiece.h"
+#import "UIView+Glow.h"
+#import "RRSGlowLabel.h"
 
 @interface SWPiece ()
 
@@ -40,13 +42,13 @@
     self.userInteractionEnabled = NO;
     self.backgroundColor = [UIColor clearColor];
 
-    _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.frame) - 80, 80, 80, 50)];
+    _titleLabel = [[RRSGlowLabel alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.frame) - 80, 80, 80, 50)];
     _titleLabel.textAlignment = NSTextAlignmentCenter;
     _titleLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
     _titleLabel.font = [UIFont boldSystemFontOfSize:50];
     _titleLabel.backgroundColor = [UIColor clearColor];
     _titleLabel.textColor = [UIColor whiteColor];
-   
+//    _titleLabel.highlightedTextColor = [UIColor yellowColor];
     [self addSubview:_titleLabel];
 
     
@@ -68,13 +70,58 @@
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
 //    [super setHighlighted:highlighted animated:animated];
-    self.titleLabel.textColor = highlighted?[UIColor redColor]:[UIColor whiteColor];
+    self.titleLabel.highlighted = highlighted;
 
+    
+    if (animated) {
+        //        - (void) startGlowingWithColor:(UIColor*)color fromIntensity:(CGFloat)fromIntensity toIntensity:(CGFloat)toIntensity repeat:(BOOL)repeat {
+
+//        [self.titleLabel startGlowingWithColor:[UIColor colorWithWhite:0.5 alpha:.8] fromIntensity:1 toIntensity:1 repeat:NO];
+//        self.titleLabel.glowColor = [UIColor colorWithWhite:0.5 alpha:.8];
+//        self.titleLabel.glowOffset = CGSizeMake(0.0, 0.0);
+//        self.titleLabel.glowAmount = 30.0;
+
+        
+//        [UIView animateWithDuration:0.4 animations:^{
+            self.titleLabel.textColor = highlighted?[UIColor redColor]:[UIColor whiteColor];
+//        } completion:^(BOOL finished) {
+        
+//        }];
+    } else {
+//        [self.titleLabel stopGlowing];
+        self.titleLabel.textColor = highlighted?[UIColor redColor]:[UIColor whiteColor];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-//    [super setSelected:selected animated:animated];
-    self.titleLabel.textColor = selected?[UIColor redColor]:[UIColor whiteColor];
+    self.titleLabel.highlighted = selected;
+    
+    if (selected) {
+//        [self.titleLabel startGlowingWithColor:[UIColor colorWithWhite:1 alpha:.8] intensity:1];
+//        [self.titleLabel startGlowingWithColor:[UIColor colorWithWhite:0.5 alpha:.8] fromIntensity:1 toIntensity:1 repeat:NO];
+//        self.titleLabel.glowColor = [UIColor colorWithRed:0 green:0.70 blue:1.0 alpha:1.0];
+//        self.titleLabel.glowOffset = CGSizeMake(0, 0);
+//        self.titleLabel.glowAmount = 100;
+
+
+    } else {
+//        [self.titleLabel stopGlowing];
+//        self.titleLabel.glowColor = [UIColor colorWithRed:0.20 green:0.70 blue:1.0 alpha:1.0];
+//        self.titleLabel.glowOffset = CGSizeMake(0.0, 0.0);
+//        self.titleLabel.glowAmount = 0;
+
+    }
+    
+    if (animated) {
+
+        [UIView animateWithDuration:0.4 animations:^{
+            self.titleLabel.textColor = selected?[UIColor redColor]:[UIColor whiteColor];
+        } completion:^(BOOL finished) {
+            
+        }];
+    } else {
+        self.titleLabel.textColor = selected?[UIColor redColor]:[UIColor whiteColor];
+    }
 }
 
 - (void)dealloc {

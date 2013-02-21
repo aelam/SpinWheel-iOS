@@ -19,6 +19,8 @@
 		94413A3E16D07E580046F3EC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94413A3D16D07E580046F3EC /* ViewController.m */; };
 		94413A4A16D07EA50046F3EC /* SpinWheel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94413A4916D07EA50046F3EC /* SpinWheel.m */; };
 		94413A4C16D0B44A0046F3EC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94413A4B16D0B44A0046F3EC /* QuartzCore.framework */; };
+		94DD6EE016D4C9330027EDC7 /* UIView+Glow.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DD6EDF16D4C9330027EDC7 /* UIView+Glow.m */; };
+		94DD6EE316D4D0580027EDC7 /* RRSGlowLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DD6EE216D4D0580027EDC7 /* RRSGlowLabel.m */; };
 		94E3E75216D3743A00C159A3 /* UIView+ColorOfPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E3E75116D3743A00C159A3 /* UIView+ColorOfPoint.m */; };
 		94E3E75E16D37C0900C159A3 /* content_mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E3E75416D37C0900C159A3 /* content_mask.png */; };
 		94E3E75F16D37C0900C159A3 /* content_mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E3E75516D37C0900C159A3 /* content_mask@2x.png */; };
@@ -35,6 +37,7 @@
 		94E3E76F16D38FE500C159A3 /* big-round@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E3E76E16D38FE500C159A3 /* big-round@2x.png */; };
 		94E6887416D1C30600A6A2C9 /* SWPiece.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E6887316D1C30600A6A2C9 /* SWPiece.m */; };
 		94E6887916D1FD8D00A6A2C9 /* IITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E6887816D1FD8D00A6A2C9 /* IITableView.m */; };
+		94F8963C16D49B8D0082A157 /* UIView+Spin.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F8963B16D49B8D0082A157 /* UIView+Spin.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +59,10 @@
 		94413A4816D07EA50046F3EC /* SpinWheel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinWheel.h; sourceTree = "<group>"; };
 		94413A4916D07EA50046F3EC /* SpinWheel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinWheel.m; sourceTree = "<group>"; };
 		94413A4B16D0B44A0046F3EC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		94DD6EDE16D4C9330027EDC7 /* UIView+Glow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Glow.h"; sourceTree = "<group>"; };
+		94DD6EDF16D4C9330027EDC7 /* UIView+Glow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Glow.m"; sourceTree = "<group>"; };
+		94DD6EE116D4D0580027EDC7 /* RRSGlowLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRSGlowLabel.h; sourceTree = "<group>"; };
+		94DD6EE216D4D0580027EDC7 /* RRSGlowLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRSGlowLabel.m; sourceTree = "<group>"; };
 		94E3E75016D3743A00C159A3 /* UIView+ColorOfPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ColorOfPoint.h"; sourceTree = "<group>"; };
 		94E3E75116D3743A00C159A3 /* UIView+ColorOfPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ColorOfPoint.m"; sourceTree = "<group>"; };
 		94E3E75416D37C0900C159A3 /* content_mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = content_mask.png; sourceTree = "<group>"; };
@@ -75,6 +82,8 @@
 		94E6887316D1C30600A6A2C9 /* SWPiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPiece.m; sourceTree = "<group>"; };
 		94E6887716D1FD8D00A6A2C9 /* IITableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IITableView.h; sourceTree = "<group>"; };
 		94E6887816D1FD8D00A6A2C9 /* IITableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IITableView.m; sourceTree = "<group>"; };
+		94F8963A16D49B8D0082A157 /* UIView+Spin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Spin.h"; sourceTree = "<group>"; };
+		94F8963B16D49B8D0082A157 /* UIView+Spin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Spin.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +166,12 @@
 				94413A4916D07EA50046F3EC /* SpinWheel.m */,
 				94E6887216D1C30600A6A2C9 /* SWPiece.h */,
 				94E6887316D1C30600A6A2C9 /* SWPiece.m */,
+				94F8963A16D49B8D0082A157 /* UIView+Spin.h */,
+				94F8963B16D49B8D0082A157 /* UIView+Spin.m */,
+				94DD6EDE16D4C9330027EDC7 /* UIView+Glow.h */,
+				94DD6EE116D4D0580027EDC7 /* RRSGlowLabel.h */,
+				94DD6EE216D4D0580027EDC7 /* RRSGlowLabel.m */,
+				94DD6EDF16D4C9330027EDC7 /* UIView+Glow.m */,
 				94E3E75016D3743A00C159A3 /* UIView+ColorOfPoint.h */,
 				94E3E75116D3743A00C159A3 /* UIView+ColorOfPoint.m */,
 			);
@@ -269,6 +284,9 @@
 				94E6887416D1C30600A6A2C9 /* SWPiece.m in Sources */,
 				94E6887916D1FD8D00A6A2C9 /* IITableView.m in Sources */,
 				94E3E75216D3743A00C159A3 /* UIView+ColorOfPoint.m in Sources */,
+				94F8963C16D49B8D0082A157 /* UIView+Spin.m in Sources */,
+				94DD6EE016D4C9330027EDC7 /* UIView+Glow.m in Sources */,
+				94DD6EE316D4D0580027EDC7 /* RRSGlowLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

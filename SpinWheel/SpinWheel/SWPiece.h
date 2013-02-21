@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class RRSGlowLabel;
 
 @interface SWPiece : UIImageView {
 }

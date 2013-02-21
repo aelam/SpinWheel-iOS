@@ -9,6 +9,7 @@
 #import "SpinWheel.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UIView+ColorOfPoint.h"
+#import "UIView+Spin.h"
 
 static NSInteger const kPieceTagOffset = 2000;
 
@@ -22,6 +23,7 @@ static NSInteger const kPieceTagOffset = 2000;
 @synthesize currentIndex = _currentIndex;
 @synthesize contentView = _contentView;
 @synthesize contentMask = _contentMask;
+@synthesize gestureMode = _gestureMode;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -52,6 +54,8 @@ static NSInteger const kPieceTagOffset = 2000;
         _recycledPieces = [[NSMutableSet alloc] initWithCapacity:0];
 
         _currentIndex = 0;
+        
+        _gestureMode = SWGestureModeRotate;
         
         [self addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:NULL];
         
@@ -87,18 +91,6 @@ static NSInteger const kPieceTagOffset = 2000;
     
 }
 
-//- (void)setContentMask:(UIView *)mask {
-//    if (mask != _contentMask) {
-//        [_contentMask removeFromSuperview];
-//        [_contentMask release];
-//        _contentMask = [mask retain];
-//        
-//        [self addSubview:_contentMask];
-//        [self bringSubviewToFront:_contentMask];
-//    }
-//}
-
-
 - (void)setDelegate:(id<SpinWheelDelegate>)aDelegate {
     BOOL needConfig = NO;
     needConfig = (_delegate != aDelegate);
@@ -110,17 +102,6 @@ static NSInteger const kPieceTagOffset = 2000;
     }
 }
 
-//- (void)setSectorImage:(UIImage *)sectorImage {
-//    BOOL needConfig = NO;
-//    needConfig = (_sectorImage != sectorImage);
-//    
-//    _sectorImage = sectorImage;
-//    
-//    if (needConfig && self.superview) {
-//        [self reloadData];
-//    }
-//}
-
 - (void)setCurrentIndex:(NSInteger)index {
     BOOL needConfig = NO;
     needConfig = (_currentIndex!= index);
@@ -131,16 +112,6 @@ static NSInteger const kPieceTagOffset = 2000;
         [self reloadData];
     }
 }
-
-
-
-//-(void)willMoveToSuperview:(UIView *)newSuperview {
-//    if (self.delegate == nil || self.contentImage == nil) {
-//        return;
-//    }
-//
-//    [self reloadData];
-//}
 
 - (void)reloadData {
 
@@ -208,7 +179,8 @@ static NSInteger const kPieceTagOffset = 2000;
 
 - (void)panGestureAction:(UIPanGestureRecognizer*)recognizer {
     
-    if (self.transform.tx == 0) {
+//    if (self.transform.tx == 0) {
+    if (self.gestureMode == SWGestureModeRotate) {
         [self rotateGestureAction:(UIPanGestureRecognizer*)recognizer];
     } else {
         [self dragGestureAction:(UIPanGestureRecognizer*)recognizer];
@@ -219,25 +191,19 @@ static NSInteger const kPieceTagOffset = 2000;
 }
 
 - (void)dragGestureAction:(UIPanGestureRecognizer*)recognizer {
-    CGPoint translate = [recognizer translationInView:[_contentView superview]];
 
-    if(recognizer.state == UIGestureRecognizerStateChanged || recognizer.state == UIGestureRecognizerStateBegan) {
-
-        self.transform = CGAffineTransformTranslate(self.transform, translate.x, 0);
-
-    } else if (recognizer.state == UIGestureRecognizerStateCancelled || recognizer.state == UIGestureRecognizerStateEnded) {
-        [UIView animateWithDuration:0.2 animations:^{
-            self.transform = CGAffineTransformIdentity;            
-        }];
+    if ([self.delegate respondsToSelector:@selector(spinWheel:movementOnTranslateMode:)]) {
+        [self.delegate spinWheel:self movementOnTranslateMode:recognizer];
     }
-
+    
 }
 
 - (void)rotateGestureAction:(UIPanGestureRecognizer*)recognizer {
     
     CGPoint currentPoint = [recognizer locationInView:[_contentView superview]];
     CGPoint translate = [recognizer translationInView:[_contentView superview]];
-    
+    CGPoint velocity = [recognizer velocityInView:[_contentView superview]];
+
     CGFloat x = currentPoint.x;
     CGFloat y = currentPoint.y;
     CGFloat x0 = currentPoint.x - translate.x;
@@ -250,15 +216,17 @@ static NSInteger const kPieceTagOffset = 2000;
     
     CGFloat angleSize = 2 * M_PI / _piecesCount;
     NSInteger index = nearbyint(radians / angleSize);
-    
+
+    // cancel old Selected Item
+    // Highlight the new one
+    NSInteger oldLogicalIndex = [self logicalIndexWithCycleIndex:index];
+    SWPiece *oldPiece = [self pieceForIndex:oldLogicalIndex];
+    [oldPiece setSelected:NO animated:YES];
+
     
     
     if(recognizer.state == UIGestureRecognizerStateChanged || recognizer.state == UIGestureRecognizerStateBegan) {
-        // cancel old Selected Item
-        // Highlight the new one
-        NSInteger oldLogicalIndex = [self logicalIndexWithCycleIndex:index];
-        SWPiece *oldPiece = [self pieceForIndex:oldLogicalIndex];
-        [oldPiece setSelected:NO animated:YES];
+        
         
         _contentView.transform = CGAffineTransformRotate(_contentView.transform, rotateRadian - rotateRadian0);
         
@@ -273,19 +241,45 @@ static NSInteger const kPieceTagOffset = 2000;
         
     } else if (recognizer.state == UIGestureRecognizerStateCancelled || recognizer.state == UIGestureRecognizerStateEnded) {
         
-        [self setFakeIndex:index animated:YES];
+        
+//        _contentView.transform = CGAffineTransformRotate(_contentView.transform, rotateRadian - rotateRadian0);
 
-        CGFloat radians = atan2f(_contentView.transform.b, _contentView.transform.a);
-        
-        NSInteger newIndex = nearbyint(radians / angleSize);
-        NSInteger newLogicalIndex = [self logicalIndexWithCycleIndex:newIndex];
-        SWPiece *newPiece = [self pieceForIndex:newLogicalIndex];
-        
-        [newPiece setSelected:YES animated:YES];
-        
+        if (1) {
+//        if (fabsf(velocity.y) > 500) {
+
+            CGFloat offset =  velocity.y /fabsf(velocity.y) * fabsf(velocity.y) / 1000;
+            //        radians += offset * M_PI / 2;
+            CGFloat offset_radian = offset * angleSize;
+            
+            
+            NSLog(@"radians:%f translate: %@ : velocity : %@ index : %d",radians, NSStringFromCGPoint(translate), NSStringFromCGPoint(velocity),index);
+            
+            [_contentView rotate:offset_radian duration:0.6 comletion:^(BOOL finished) {
+                CGFloat radians = atan2f(_contentView.transform.b, _contentView.transform.a);
+                NSInteger index = nearbyint(radians / angleSize);
+                [self setFakeIndex:index  animated:YES];
+                                
+                NSInteger newIndex = nearbyint(radians / angleSize);
+                NSInteger newLogicalIndex = [self logicalIndexWithCycleIndex:newIndex];
+                SWPiece *newPiece = [self pieceForIndex:newLogicalIndex];
+                
+                [newPiece setSelected:YES animated:YES];
+                
+                
+            }];
+        } else {
+            CGFloat radians = atan2f(_contentView.transform.b, _contentView.transform.a);
+            NSInteger index = nearbyint(radians / angleSize);
+            [self setFakeIndex:index  animated:YES];
+            
+            NSInteger newIndex = nearbyint(radians / angleSize);
+            NSInteger newLogicalIndex = [self logicalIndexWithCycleIndex:newIndex];
+            SWPiece *newPiece = [self pieceForIndex:newLogicalIndex];
+            
+            [newPiece setSelected:YES animated:YES];
+
+        }        
     }
-    
-
 }
 
 
@@ -306,33 +300,6 @@ static NSInteger const kPieceTagOffset = 2000;
     }
     return realIndex;
 }
-
-//- (void)animationToFakeIndex:(NSInteger)fakeIndex completion:(void (^)(BOOL finished))completion {
-//    CGFloat angleSize = 2 * M_PI / _piecesCount;
-//    
-//    // update currentIndex
-//    _currentIndex = [self logicalIndexWithCycleIndex:fakeIndex];
-//    
-//    if (animated) {
-//        [UIView animateWithDuration:0.3 animations:^{
-//            _contentView.transform = CGAffineTransformMakeRotation(angleSize * fakeIndex);
-//        } completion:^(BOOL finished) {
-//            if ([self.delegate respondsToSelector:@selector(spinWheel:didSpinToIndex:)]) {
-//                [self.delegate spinWheel:self didSpinToIndex:_currentIndex];
-//            }
-//        }];
-//        [UIView animateWithDuration:0.3 animations:^{
-//            _contentView.transform = CGAffineTransformMakeRotation(angleSize * fakeIndex);
-//        }];
-//    } else {
-//        _contentView.transform = CGAffineTransformMakeRotation(angleSize * fakeIndex);
-//        if ([self.delegate respondsToSelector:@selector(spinWheel:didSpinToIndex:)]) {
-//            [self.delegate spinWheel:self didSpinToIndex:_currentIndex];
-//        }
-//    }
-//
-//    
-//}
 
 - (void)setFakeIndex:(NSInteger)fakeIndex animated:(BOOL)animated {
     CGFloat angleSize = 2 * M_PI / _piecesCount;
@@ -357,8 +324,6 @@ static NSInteger const kPieceTagOffset = 2000;
             [self.delegate spinWheel:self didSpinToIndex:_currentIndex];
         }
     }
-    
-    
 }
 
 - (id)dequeueReusablePiece {

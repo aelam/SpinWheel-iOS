@@ -19,10 +19,17 @@
 
 @optional
 - (void)spinWheel:(SpinWheel *)spinWheel didSpinToIndex:(NSInteger)index;
-- (void)spinWheel:(SpinWheel *)spinWheel willSpinToIndex:(NSInteger)index;
-- (void)spinWheel:(SpinWheel *)spinWheel willUnspinIndex:(NSInteger)index;
+//- (void)spinWheel:(SpinWheel *)spinWheel willSpinToIndex:(NSInteger)index;
+//- (void)spinWheel:(SpinWheel *)spinWheel willUnspinIndex:(NSInteger)index;
+
+- (void)spinWheel:(SpinWheel *)spinWheel movementOnTranslateMode:(UIPanGestureRecognizer *)recognizer;
 
 @end
+
+enum SWGestureMode {
+    SWGestureModeTranslate,
+    SWGestureModeRotate,
+};
 
 @interface SpinWheel : UIView <SpinWheelDelegate> {
 
@@ -31,6 +38,10 @@
         
     NSMutableSet *_recycledPieces;
     
+    int            _gestureMode;
+    
+    
+    NSInteger      _oldSelectedPieceIndex;
 }
 
 
@@ -39,7 +50,7 @@
 @property (nonatomic,assign)  NSInteger     currentIndex;
 @property (nonatomic,readonly)UIImageView   *contentView;
 @property (nonatomic,readonly)UIImageView   *contentMask;
-
+@property (nonatomic,assign) int           gestureMode;
 
 - (id)dequeueReusablePiece;
 
