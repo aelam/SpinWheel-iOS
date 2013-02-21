@@ -9,6 +9,9 @@
 #import "SWPiece.h"
 #import "UIView+Glow.h"
 #import "FXLabel.h"
+#import <QuartzCore/QuartzCore.h>
+#import "InnerShadowLabel.h"
+
 
 @interface SWPiece ()
 
@@ -47,15 +50,29 @@
     _titleLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
     _titleLabel.font = [UIFont boldSystemFontOfSize:50];
     _titleLabel.backgroundColor = [UIColor clearColor];
+#if 0
     _titleLabel.textColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:1];
     _titleLabel.shadowColor = [UIColor colorWithWhite:1.0f alpha:0.65];
-    _titleLabel.shadowOffset = CGSizeMake(0.5, 0.5);
+    _titleLabel.shadowOffset = CGSizeMake(0.8, 0.8);
     _titleLabel.innerShadowBlur = 0;
     _titleLabel.innerShadowColor = [UIColor colorWithWhite:0 alpha:0.27];
     _titleLabel.innerShadowOffset = CGSizeMake(0.5, 0.5);
     
     _titleLabel.highlightedTextColor = [UIColor redColor];
-    
+
+#else
+    _titleLabel.textColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:1];
+    _titleLabel.shadowColor = [UIColor colorWithWhite:1.0f alpha:0.65];
+    _titleLabel.shadowOffset = CGSizeMake(0.7,0.7);
+    _titleLabel.innerShadowBlur = 0.5;
+    _titleLabel.innerShadowColor = [UIColor colorWithWhite:0 alpha:0.27];
+    _titleLabel.innerShadowOffset = CGSizeMake(0.5,0.5);
+    _titleLabel.highlightedTextColor = [UIColor redColor];
+//
+//    CGPathRef shadowPath = CGPathCreateWithRect(_titleLabel.bounds, NULL);
+//    _titleLabel.layer.shadowPath = shadowPath;
+//    CGPathRelease(shadowPath);
+#endif
     [self addSubview:_titleLabel];
 
     
@@ -198,6 +215,10 @@
     }
 }
 
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"text : %@ tag : %d",self.titleLabel.text,self.tag];
+}
 
 - (void)dealloc {
     [_titleLabel release];

@@ -17,7 +17,9 @@ static NSInteger const kPieceTagOffset = 2000;
 
 @end
 
-@implementation SpinWheel
+@implementation SpinWheel {
+    NSInteger _fakeIndex;
+}
 
 @synthesize delegate = _delegate;
 @synthesize currentIndex = _currentIndex;
@@ -56,7 +58,6 @@ static NSInteger const kPieceTagOffset = 2000;
         _gestureMode = SWGestureModeRotate;
         
         [self addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:NULL];
-        
     }
     return self;
 }
@@ -218,11 +219,18 @@ static NSInteger const kPieceTagOffset = 2000;
 
     // cancel old Selected Item
     // Highlight the new one
+#if 0
     NSInteger oldLogicalIndex = [self logicalIndexWithCycleIndex:index];
     SWPiece *oldPiece = [self pieceForIndex:oldLogicalIndex];
     [oldPiece setSelected:NO animated:YES];
-
+#else
+    NSInteger oldLogicalIndex = [self logicalIndexWithCycleIndex:_fakeIndex];
+    SWPiece *oldPiece = [self pieceForIndex:oldLogicalIndex];
+    [oldPiece setSelected:NO animated:YES];
+    NSLog(@"unselected: %d,_fakeIndex = %d",oldLogicalIndex,_fakeIndex);
+#endif
     
+    NSLog(@"radians, %f",radians);
     
     if(recognizer.state == UIGestureRecognizerStateChanged || recognizer.state == UIGestureRecognizerStateBegan) {
         
@@ -230,18 +238,29 @@ static NSInteger const kPieceTagOffset = 2000;
         _contentView.transform = CGAffineTransformRotate(_contentView.transform, rotateRadian - rotateRadian0);
         
         CGFloat radians = atan2f(_contentView.transform.b, _contentView.transform.a);
-        
+        NSLog(@"new radians, %f",radians);
+
         NSInteger newIndex = nearbyint(radians / angleSize);
         NSInteger newLogicalIndex = [self logicalIndexWithCycleIndex:newIndex];
-        SWPiece *newPiece = [self pieceForIndex:newLogicalIndex];
+//        SWPiece *newPiece = [self pieceForIndex:newLogicalIndex];
         
-        [newPiece setSelected:YES animated:YES];
+//        [newPiece setSelected:YES animated:YES];
+        NSLog(@"selected: %d",newLogicalIndex);
+        NSInteger tag = newLogicalIndex + kPieceTagOffset;
+        for(SWPiece *piece in _contentView.subviews) {            
+            if ([piece isKindOfClass:[SWPiece class]] && piece.tag == tag) {
+                [piece setSelected:YES animated:NO];
+            } else {
+                [piece setSelected:NO animated:NO];
+            }
+        }
+
         
         
     } else if (recognizer.state == UIGestureRecognizerStateCancelled || recognizer.state == UIGestureRecognizerStateEnded) {
         
-        if (1) {
-//        if (fabsf(velocity.y) > 500) {
+//        if (1) {
+        if (fabsf(velocity.y) > 500) {
 
             CGFloat offset =  velocity.y /fabsf(velocity.y) * fabsf(velocity.y) / 800;
             //        radians += offset * M_PI / 2;
@@ -254,12 +273,32 @@ static NSInteger const kPieceTagOffset = 2000;
                 CGFloat radians = atan2f(_contentView.transform.b, _contentView.transform.a);
                 NSInteger index = nearbyint(radians / angleSize);
                 [self setFakeIndex:index  animated:YES];
-                                
-                NSInteger newIndex = nearbyint(radians / angleSize);
-                NSInteger newLogicalIndex = [self logicalIndexWithCycleIndex:newIndex];
-                SWPiece *newPiece = [self pieceForIndex:newLogicalIndex];
                 
-                [newPiece setSelected:YES animated:YES];
+                NSInteger newIndex = nearbyint(radians / angleSize);
+
+                
+                NSInteger newLogicalIndex = [self logicalIndexWithCycleIndex:newIndex];
+
+                NSInteger tag = newLogicalIndex + kPieceTagOffset;
+                for(SWPiece *piece in _contentView.subviews) {
+
+                    if ([piece isKindOfClass:[SWPiece class]] && piece.tag == tag) {
+                        [piece setSelected:YES animated:NO];
+
+                    } else {
+                        [piece setSelected:NO animated:NO];
+                    }
+                }
+
+                
+//                NSInteger newIndex = nearbyint(radians / angleSize);
+//                NSInteger newLogicalIndex = [self logicalIndexWithCycleIndex:newIndex];
+//                SWPiece *newPiece = [self pieceForIndex:newLogicalIndex];
+//                
+//                [newPiece setSelected:YES animated:YES];
+//
+//                _fakeIndex = newIndex;
+//                NSLog(@"selected: %d",newLogicalIndex);
                 
                 
             }];
@@ -300,6 +339,8 @@ static NSInteger const kPieceTagOffset = 2000;
 - (void)setFakeIndex:(NSInteger)fakeIndex animated:(BOOL)animated {
     CGFloat angleSize = 2 * M_PI / _piecesCount;
 
+    _fakeIndex = fakeIndex;
+    
     // update currentIndex
     _currentIndex = [self logicalIndexWithCycleIndex:fakeIndex];
     

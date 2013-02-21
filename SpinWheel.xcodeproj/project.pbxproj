@@ -39,6 +39,7 @@
 		94E3E76F16D38FE500C159A3 /* big-round@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E3E76E16D38FE500C159A3 /* big-round@2x.png */; };
 		94E6887416D1C30600A6A2C9 /* SWPiece.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E6887316D1C30600A6A2C9 /* SWPiece.m */; };
 		94E6887916D1FD8D00A6A2C9 /* IITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E6887816D1FD8D00A6A2C9 /* IITableView.m */; };
+		94EE2BA816D6745300BAB097 /* InnerShadowLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EE2BA716D6745300BAB097 /* InnerShadowLabel.m */; };
 		94F8963C16D49B8D0082A157 /* UIView+Spin.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F8963B16D49B8D0082A157 /* UIView+Spin.m */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +87,8 @@
 		94E6887316D1C30600A6A2C9 /* SWPiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPiece.m; sourceTree = "<group>"; };
 		94E6887716D1FD8D00A6A2C9 /* IITableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IITableView.h; sourceTree = "<group>"; };
 		94E6887816D1FD8D00A6A2C9 /* IITableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IITableView.m; sourceTree = "<group>"; };
+		94EE2BA616D6745300BAB097 /* InnerShadowLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InnerShadowLabel.h; sourceTree = "<group>"; };
+		94EE2BA716D6745300BAB097 /* InnerShadowLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InnerShadowLabel.m; sourceTree = "<group>"; };
 		94F8963A16D49B8D0082A157 /* UIView+Spin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Spin.h"; sourceTree = "<group>"; };
 		94F8963B16D49B8D0082A157 /* UIView+Spin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Spin.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -176,6 +179,8 @@
 				94DD6EDF16D4C9330027EDC7 /* UIView+Glow.m */,
 				94D8AAAC16D60213007A4271 /* FXLabel.h */,
 				94D8AAAD16D60213007A4271 /* FXLabel.m */,
+				94EE2BA616D6745300BAB097 /* InnerShadowLabel.h */,
+				94EE2BA716D6745300BAB097 /* InnerShadowLabel.m */,
 				94E3E75016D3743A00C159A3 /* UIView+ColorOfPoint.h */,
 				94E3E75116D3743A00C159A3 /* UIView+ColorOfPoint.m */,
 			);
@@ -295,6 +300,7 @@
 				94F8963C16D49B8D0082A157 /* UIView+Spin.m in Sources */,
 				94DD6EE016D4C9330027EDC7 /* UIView+Glow.m in Sources */,
 				94D8AAAE16D60213007A4271 /* FXLabel.m in Sources */,
+				94EE2BA816D6745300BAB097 /* InnerShadowLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

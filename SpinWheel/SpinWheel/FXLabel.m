@@ -828,6 +828,8 @@
         UIGraphicsBeginImageContextWithOptions(rect.size, NO, _oversampling);
     }
     CGContextRef context = UIGraphicsGetCurrentContext();
+ 
+    CGContextSetShouldAntialias(context, YES);
     
     //apply insets
     CGRect contentRect = CGRectMake(0.0f, 0.0f, self.bounds.size.width, self.bounds.size.height);
